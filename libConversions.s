@@ -2,9 +2,13 @@
  * This file contains the following functions:
  *      - miles2kiometres(int miles)
  *      - kph(int hours, int miles)
+ *      - CToF(int celsius)
+ *      - InchesToFt(int inches)
  */
 .global miles2kilometers
 .global kph
+.global CToF
+.global InchesToFt
 
 .text
 # function miles2kilometers
@@ -81,4 +85,47 @@ kph:
     MOV pc, lr
 
 .data
+
+.text
+# function CToF
+# Purpose: Converting Celsius temperatures to Fahrenheit
+# Inputs: a Celcius value in r0
+# Alterations: 
+CToF:
+    SUB sp, sp, #4
+    STR lr, [sp, #0]
+
+    # Multiplying by 9
+    ADD r0, r0, r0, LSL #3 
+    MOV r1, #5
+    BL __aeabi_idiv
+
+    ADD r0, r0, #32
+
+    LDR lr, [sp]
+    ADD sp, sp, #4
+    MOV pc, lr
+
+.data
+#end CToF
+
+.text
+# function InchesToFt
+# Purpose: converting inches to feet
+# Inputs: an inches value in r0
+# Alterations: 
+InchesToFt:
+
+    SUB sp, sp, #4
+    STR lr, [sp, #0]
+
+    MOV r1, #12
+    BL __aeabi_idiv
+    
+    LDR lr, [sp]
+    ADD sp, sp, #4
+    MOV pc, lr
+
+.data
+#end InchesToFt
 
