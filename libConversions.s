@@ -42,3 +42,12 @@ miles2kilometers:
     mov pc, lr
 .data
 #end miles2kilometers
+
+.text
+# function kph
+kph:
+    
+    mov pc, lr
+
+.data
+
