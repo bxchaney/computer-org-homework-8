@@ -9,9 +9,9 @@ main:
     mov r0, #100
     bl miles2kilometers
 
-	mov r1, r0
-	ldr r0, =output
-	bl printf
+    mov r1, r0
+    ldr r0, =output
+    bl printf
 
     ldr lr, [sp, #0]
     add sp, sp, #4
@@ -19,5 +19,7 @@ main:
 
 
 .data
-	output: .asciz "%d\n"
+    prompt: .asciz "Please provide hours and miles: "
+    input: .asciz "%d %d"
+    output: .asciz "%d\n"
 # end main
