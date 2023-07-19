@@ -1,3 +1,7 @@
+/**
+ * This program prompts the user to provide values for hours and miles and 
+ * makes the conversion to kilometers per hour.
+ */
 .global main
 .text
 

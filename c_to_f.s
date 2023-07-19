@@ -1,3 +1,7 @@
+/**
+ * This program prompts the user to provide a celsius value, converts it to 
+ * Fahrenheit, and displays the result to the user.
+ */
 .global main
 .text
 main:

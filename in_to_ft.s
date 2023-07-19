@@ -1,3 +1,7 @@
+/**
+ * This program prompts the user for a number of inches, calls the InchesToFeet
+ * function, and returns the corresponding number of inches.
+ */
 .global main
 .text
 main:
