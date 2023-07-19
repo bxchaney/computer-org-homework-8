@@ -1,3 +1,7 @@
+/**
+ * This program prompts the user to provide values for hours and miles and 
+ * makes the conversion to kilometers per hour.
+ */
 .global main
 .text
 
@@ -7,28 +11,30 @@ main:
     STR lr, [sp, #0]
 
     # Prompt for input:
-    MOV r0, =prompt
+    LDR r0, =prompt
     BL printf
 
     # Scanf
-    MOV r0, =input
-    MOV r1, =hours
-    MOV r2, =miles
+    LDR r0, =input
+    LDR r1, =hours
+    LDR r2, =miles
     BL scanf
 
     # Get kph
-    MOV r0, [r1, #0]
-    MOV r1, [r2, #0]
+	LDR r0, =hours
+    LDR r0, [r0, #0]
+    LDR r1, =miles
+	LDR r1, [r1, #0]
 
     # Store copies of hours, miles 
-    MOV r4, r0
-    MOV r5, r1
+    ADD r5, r0, #0
+    ADD r6, r1, #0
     BL kph
 
     MOV r3, r0
     LDR r0, =output
-    MOV r1, r4
-    MOV r2, r5
+    MOV r1, r5
+    MOV r2, r6
     BL printf
 
     LDR lr, [sp, #0]

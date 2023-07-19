@@ -60,22 +60,23 @@ miles2kilometers:
 # function kph
 # Purpose: to convert hours and miles inputs into kilometers per hour
 # Inputs: an integer hours value in r0 and an integer miles value in r1
-# Alterations: This function uses registers r0, r1, r2, and r3 for intermediate
+# Alterations: This function uses registers r0, r1, r2, r3, and r4 for intermediate
 #   operations during function execution. Values in these registers will be 
 #   overwritten.
 kph:
     SUB sp, sp, #4
     STR lr, [sp, #0]
 
-    # the miles2kilometers function uses registers r0, r1, and r2
-    # so we store r0 (hours) in r3 temporarily
-    MOV r3, r0
+    # the miles2kilometers function uses registers r0, r1, r2, and r3
+    # so we store r0 (hours) in r4 temporarily
+    MOV r4, r0
     MOV r0, r1
     BL miles2kilometers
 
     # r0 now contains the number of miles
-    # MOVe hours back into r1 and call division
-    MOV r1, r3
+    # move hours back into r1 and call division
+	# division call uses r3
+    MOV r1, r4
     BL __aeabi_idiv
 
     #result is in r0 so we can return control
