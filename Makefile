@@ -1,4 +1,4 @@
-All: build miles_hours_to_kph c_to_f in_to_ft
+All: miles_hours_to_kph c_to_f in_to_ft
 LIB=libConversions.o
 CC=gcc
 BUILD_DIR=build
